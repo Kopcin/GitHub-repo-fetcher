@@ -1,18 +1,18 @@
 # GitHub Repo Fetcher
 
-## Opis
+## Description
 
-Aplikacja Spring Boot wystawiająca endpoint REST `/users/{username}/repos`, który pobiera publiczne repozytoria użytkownika GitHub, filtruje forki i dla każdego repo zwraca:
+A Spring Boot application exposing a REST endpoint /users/{username}/repos that fetches a GitHub user's public repositories, filters out forks, and for each repository returns:
 
-- Nazwę repozytorium
-- Login właściciela
-- Listę branchów z nazwą i ostatnim SHA commita
+- Repository name
+- Owner login
+- List of branches with their name and the last commit SHA
 
 ## Endpoint
 
 GET `/users/{username}/repos`
 
-### Przykładowa odpowiedź
+### Sample Response
 
 ```json
 [
@@ -29,9 +29,9 @@ GET `/users/{username}/repos`
 ]
 ```
 
-### Błędy
+### Errors
 
-Dla nieistniejącego użytkownika zwracany jest status 404 w formacie:
+For a non-existent user, the API returns status 404 in the format:
 ```json
 {
 "status": 404,
@@ -39,18 +39,18 @@ Dla nieistniejącego użytkownika zwracany jest status 404 w formacie:
 }
 ```
 
-## Technologie
+## Technologies
 Java 21
 
 Spring Boot 3.5
 
-RestTemplate do wywołań HTTP
+RestTemplate for HTTP calls
 
-## Uruchomienie
+## Running the Application
 
-1. Sklonuj repozytorium.
-2. Uruchom aplikację Spring Boot (np. z IDE lub ./mvnw spring-boot:run).
-3. Wywołaj endpoint REST pod adresem http://localhost:8080/users/{username}/repos.
+1. Clone the repository.
+2. Run the Spring Boot application (e.g. from your IDE or using ./mvnw spring-boot:run).
+3. Call the REST endpoint at http://localhost:8080/users/{username}/repos.
 
-## Testy
-W repozytorium znajduje się test integracyjny sprawdzający happy path endpointu.
+## Tests
+The repository contains one integration test verifying the happy path of the endpoint.
